@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+.byebug_history
+.vscode/*
+.gitignore.swp
+
 # Ignore all environment files.
 /.env*
 
