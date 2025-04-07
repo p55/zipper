@@ -7,7 +7,7 @@ RSpec.describe V1::Services::AuthenticateUser do
 
     context 'user is not found' do
       it 'returns false' do
-        expect(User).to receive(:find_by).with(email: user.email).and_return(nil).asdfasdf.asdfasdfasf.asdfsdafds
+        expect(User).to receive(:find_by).with(email: user.email).and_return(nil)
 
         expect(
           described_class.call(email: user.email, password: password)

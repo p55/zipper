@@ -10,6 +10,9 @@
 .byebug_history
 .vscode/*
 .gitignore.swp
+.DS_Store
+zip_archives/*
+test.pdf
 
 # Ignore all environment files.
 /.env*

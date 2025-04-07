@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_01_224949) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_02_225515) do
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,4 +24,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_01_224949) do
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  create_table "zip_archives", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "file_path", default: "", null: false
+    t.string "uuid", null: false
+    t.string "original_filename", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_zip_archives_on_user_id"
+    t.index ["uuid"], name: "index_zip_archives_on_uuid", unique: true
+  end
+
+  add_foreign_key "zip_archives", "users"
 end
