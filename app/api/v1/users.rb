@@ -18,7 +18,6 @@ module V1
         requires :password, type: String, desc: "User password"
       end
       post :login do
-        desc "Return JWT token if valid email and password given"
         user = V1::Services::AuthenticateUser.call(email: params[:email], password: params[:password])
 
         if user

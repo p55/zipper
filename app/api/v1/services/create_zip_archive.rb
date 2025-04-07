@@ -5,7 +5,7 @@ module V1
 
       def call(file_params:, user:)
         @user = user
-        @filename = file_params[:filename]
+        @filename = sanitize_filename(file_params[:filename])
         @tempfile = file_params[:tempfile]
         @password = SecureRandom.hex(12)
         @uuid = SecureRandom.uuid
@@ -25,6 +25,10 @@ module V1
       end
 
       private
+
+      def sanitize_filename(filename)
+        filename.gsub(/[^0-9A-Za-z.\-_]/, "_")
+      end
 
       def prepare_user_dir!
         FileUtils.mkdir_p(@user.zip_archives_dir_path) unless Dir.exist?(@user.zip_archives_dir_path)
