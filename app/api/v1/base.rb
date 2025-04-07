@@ -18,5 +18,22 @@ module V1
 
     mount V1::Users
     mount V1::ZipArchives
+
+    add_swagger_documentation(
+      mount_path: "/docs",
+      info: {
+        title: "Zipper API",
+        description: "API for user logging and creating zip archives"
+      },
+      api_version: "v1",
+      hide_documentation_path: true,
+      security_definitions: {
+        Bearer: {
+          type: "apiKey",
+          name: "Authorization",
+          in: "header"
+        }
+      },
+    )
   end
 end
