@@ -19,6 +19,8 @@ Layout/EndAlignment:
   Enabled: true
 Layout/EmptyLinesAroundMethodBody:
   Enabled: true
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
 
 Lint/UselessAssignment:
   Enabled: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateZipArchives < ActiveRecord::Migration[8.0]
   def change
     create_table :zip_archives do |t|

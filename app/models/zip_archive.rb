@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ZipArchive < ApplicationRecord
   DIR_NAME = "zip_archives".freeze
 

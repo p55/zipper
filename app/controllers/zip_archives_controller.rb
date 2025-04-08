@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ZipArchivesController < ApplicationController
   def download
     archive = ZipArchive.find_by(uuid: params[:uuid])

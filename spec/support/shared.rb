@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples '400 bad request' do |method_name, endpoint, params: {}, headers: {}|
   it 'returns 400 bad request' do
     send(method_name, endpoint, params: params, headers: headers)
