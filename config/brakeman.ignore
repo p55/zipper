@@ -1,0 +1,28 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "aa7f7d49f8d39d13e5d4b076a054a1edd5803f861f88c2e3d008173fe0666ecc",
+      "check_name": "SendFile",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/zip_archives_controller.rb",
+      "line": 16,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(File.expand_path(ZipArchive.find_by(:uuid => params[:uuid]).file_path), :filename => File.basename(File.expand_path(ZipArchive.find_by(:uuid => params[:uuid]).file_path)), :type => \"application/zip\", :disposition => \"attachment\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ZipArchivesController",
+        "method": "download"
+      },
+      "user_input": "ZipArchive.find_by(:uuid => params[:uuid]).file_path",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": "Fully secured by checking file_path and user.zip_archives_dir_path"
+    }
+  ],
+  "brakeman_version": "7.0.2"
+}

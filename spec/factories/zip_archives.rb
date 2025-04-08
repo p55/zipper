@@ -7,9 +7,13 @@ FactoryBot.define do
 
     trait(:with_physical_file) do
       after(:create) do |archive|
-        FileUtils.mkdir_p(archive.user.zip_archives_dir_path)
-        system("cd #{archive.user.zip_archives_dir_path} && touch #{archive.uuid}.zip")
-        archive.update!(file_path: File.join(archive.user.zip_archives_dir_path, archive.file_path))
+        dir_path = archive.user.zip_archives_dir_path
+        zip_path = File.join(dir_path, "#{archive.uuid}.zip")
+
+        FileUtils.mkdir_p(dir_path)
+        FileUtils.touch(zip_path)
+
+        archive.update!(file_path: zip_path)
       end
     end
   end

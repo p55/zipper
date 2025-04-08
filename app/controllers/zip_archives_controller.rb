@@ -1,14 +1,19 @@
 class ZipArchivesController < ApplicationController
   def download
-    zip_archive = ZipArchive.find_by(uuid: params[:uuid])
+    archive = ZipArchive.find_by(uuid: params[:uuid])
 
-    if zip_archive.nil? || !File.exist?(zip_archive.file_path)
-      render json: { error: "File not found" }, status: :not_found
-      return
+    if archive.nil? || !File.exist?(archive.file_path)
+      return render json: { error: "File not found" }, status: :not_found
     end
 
-    send_file zip_archive.file_path,
-      filename: File.basename(zip_archive.file_path),
+    real_path = File.expand_path(archive.file_path)
+    unless real_path.start_with?(archive.user.zip_archives_dir_path)
+      Rails.logger.warn("Unauthorized file access attempt: #{real_path}")
+      return render json: { error: "Forbidden" }, status: :forbidden
+    end
+
+    send_file real_path,
+      filename: File.basename(real_path),
       type: "application/zip",
       disposition: "attachment"
   end
