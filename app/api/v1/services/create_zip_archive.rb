@@ -46,7 +46,7 @@ module V1
 
       def zip_file(input_path, output_path)
         Dir.chdir(File.dirname(input_path)) do
-          stdout, stderr, status = Open3.capture3("zip", "-j", "-P", @password, output_path.to_s, @filename.to_s)
+          _stdout, stderr, status = Open3.capture3("zip", "-j", "-P", @password, output_path.to_s, @filename.to_s)
           raise EncryptionError, "Zip failed: #{stderr}" unless status.success?
         end
       end

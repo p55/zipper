@@ -79,7 +79,7 @@ RSpec.describe 'User authorization', type: :request do
 
         expect {
           delete '/api/v1/users/logout', headers: headers
-        }.to change { user.reload.jti }
+        }.to(change { user.reload.jti })
 
         expect(response.status).to eq(204)
         expect(response.body).to be_empty
