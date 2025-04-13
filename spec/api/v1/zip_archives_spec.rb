@@ -30,7 +30,6 @@ RSpec.describe 'Zip archives', type: :request do
 
     context 'valid token is provided' do
       let(:user) { create(:user) }
-      after { FileUtils.rm_rf(user.zip_archives_dir_path) }
 
       it 'creates zip archive and returns download link with password' do
         token = V1::Services::GenerateToken.call(user: user)
@@ -49,6 +48,8 @@ RSpec.describe 'Zip archives', type: :request do
         expect(parsed_response(response)[:download_link])
           .to eq(Rails.application.routes.url_helpers.download_zip_archive_url(uuid: archive.uuid))
         expect(parsed_response(response)[:password]).to match(/\A[a-f0-9]{24}\z/)
+      ensure
+        FileUtils.rm_rf(user.zip_archives_dir_path)
       end
     end
   end

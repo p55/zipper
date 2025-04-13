@@ -34,16 +34,14 @@ RSpec.describe "ZipArchives", type: :request do
         let!(:archive) { create(:zip_archive, :with_physical_file) }
         let(:archive_uuid) { archive.uuid }
 
-        after do
-          FileUtils.rm_rf(archive.file_path) if File.exist?(archive.file_path)
-        end
-
         it "returns the zip file" do
           download_request
 
           expect(response).to have_http_status(:ok)
           expect(response.headers['Content-Type']).to eq("application/zip")
           expect(response.headers['Content-Disposition']).to include("attachment")
+        ensure
+          FileUtils.rm_rf(archive.file_path) if File.exist?(archive.file_path)
         end
       end
 
