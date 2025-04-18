@@ -7,7 +7,7 @@ module V1
         detail "Authenticate user and return access token"
         success code: 200, message: "Token generated", examples: {
           "application/json" => {
-            token: "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.n8N9_OmjfG3Y9YmKqKjA3EjOyoY5Rmzr2bw"
+            token: "sample.token.here"
           }
         }
         failure [

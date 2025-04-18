@@ -9,7 +9,7 @@ module V1
         success code: 200, message: "Archive created", examples: {
           "application/json" => {
             download_link: "http://localhost:3000/zip_archives/uuid/download",
-            password: "e8bf69020476935f750bca30"
+            password: "example_password"
           }
         }
         failure [
