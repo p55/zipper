@@ -6,3 +6,55 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+  AllowedPatterns:
+    - 'http:\/\/'
+    - '^#'
+  AllowHeredoc: true
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: true
+Layout/EndAlignment:
+  Enabled: true
+Layout/EmptyLinesAroundMethodBody:
+  Enabled: true
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enabled: true
+Lint/UnusedMethodArgument:
+  Enabled: true
+Lint/DuplicateMethods:
+  Enabled: true
+Lint/RedundantCopDisableDirective:
+  Enabled: true
+Lint/AmbiguousBlockAssociation:
+  Enabled: true
+
+Style/GuardClause:
+  Enabled: true
+Style/MethodDefParentheses:
+  Enabled: true
+Style/SignalException:
+  Enabled: true
+Style/FrozenStringLiteralComment:
+  Enabled: true
+Style/EmptyElse:
+  Enabled: true
+Style/RedundantBegin:
+  Enabled: true
+Style/DoubleNegation:
+  Enabled: true
+
+Security/Open:
+  Enabled: true
+Security/Eval:
+  Enabled: true
+Security/YAMLLoad:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    - 'config/initializers/devise.rb'
